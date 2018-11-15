@@ -24,4 +24,20 @@ public class SecUserServiceImpl implements SecUserService {
 		return secUserRepository.findAll();
 	}
 
+	@Override
+	public SecUser findOne(Long id) {
+		return secUserRepository.findById(id).get();
+	}
+
+	@Override
+	public SecUser addSecUser(SecUser secUser) {
+		return secUserRepository.save(secUser);
+	}
+
+	@Override
+	public String deleteSecUser(Long id) {
+		secUserRepository.deleteById(id);
+		return "{'message': 'Sec User with id " + id + " has been deleted!'}";
+	}
+
 }
